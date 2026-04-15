@@ -1,16 +1,78 @@
-# React + Vite
+# GLB Folio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+3Dモデルをインタラクティブに閲覧・共有できるポートフォリオSNS。  
+GLBファイルをアップロードしてぐるぐる回しながら作品を展示できます。
 
-Currently, two official plugins are available:
+## 🔗 Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+（Vercel公開後に追記）
 
-## React Compiler
+## 📸 Screenshot
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+（スクリーンショット追加予定）
 
-## Expanding the ESLint configuration
+## 🛠 技術スタック
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| 役割 | 技術 |
+|------|------|
+| フロントエンド | React + Vite |
+| 認証 | Supabase Auth（Google OAuth） |
+| データベース | Supabase（PostgreSQL） |
+| ストレージ | Supabase Storage |
+| 3Dビューワー | React Three Fiber（実装予定） |
+| デプロイ | Vercel（予定） |
+
+## 🗄 データベース設計
+
+| テーブル | 役割 |
+|------|------|
+| `profiles` | ユーザープロフィール |
+| `models` | 3Dモデル投稿 |
+| `likes` | いいね |
+| `comments` | コメント |
+| `follows` | フォロー関係 |
+| `tags` / `model_tags` | タグ管理（多対多） |
+
+## ✨ 主な機能
+
+- [x] Googleアカウントでログイン・ログアウト
+- [ ] GLBファイルのアップロード
+- [ ] 3Dモデルのインタラクティブビューワー
+- [ ] ポートフォリオ一覧・詳細表示
+- [ ] いいね・コメント
+- [ ] ユーザーフォロー
+
+## 🚀 ローカル環境での起動方法
+
+```bash
+git clone https://github.com/u-rush/glb-folio.git
+cd glb-folio
+npm install
+```
+
+プロジェクトルートに `.env` ファイルを作成：
+
+```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+```bash
+npm run dev
+```
+
+## 📁 ディレクトリ構成
+
+```
+src/
+├── pages/
+│   ├── Auth.jsx      # ログイン画面
+│   └── Home.jsx      # ログイン後のホーム画面
+├── App.jsx           # 認証状態の管理
+├── supabase.js       # Supabaseクライアント設定
+└── main.jsx
+```
+
+## 👤 作者
+
+GitHub: [@u-rush](https://github.com/u-rush)
