@@ -1,14 +1,11 @@
-import { supabase } from "../supabase";
+import Navbar from "../components/Navbar";
 
 function Home({ session }) {
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-  };
-
   return (
     <div>
+      <Navbar session={session} />
+      <h1>ホーム</h1>
       <p>ログイン中: {session.user.email}</p>
-      <button onClick={handleLogout}>ログアウト</button>
     </div>
   );
 }
